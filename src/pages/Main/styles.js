@@ -19,7 +19,7 @@ export const Input = styled.TextInput.attrs({
   background: #eee;
   border-radius: 4px;
   padding: 0 15px;
-  border: 1px solid #eee;
+  border: 1px solid #999;
 `;
 export const SubmitButton = styled(RectButton)`
   justify-content: center;
@@ -30,6 +30,7 @@ export const SubmitButton = styled(RectButton)`
   padding: 0 12px;
   opacity: ${props => (props.loading ? 0.7 : 1)};
 `;
+// FlatList is a native List from React-native
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
 })`
