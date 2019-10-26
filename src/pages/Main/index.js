@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard, ActivityIndicator } from 'react-native';
+import { Keyboard, ActivityIndicator, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
@@ -66,7 +66,7 @@ export default class Main extends Component {
 
       const userExist = users.find(u => u.login === data.login);
 
-      if (userExist) throw Error('User is already registred');
+      if (userExist) throw Error('Usuário já está cadastrado');
 
       this.setState({
         users: [...users, data],
@@ -75,8 +75,9 @@ export default class Main extends Component {
       });
 
       Keyboard.dismiss();
-    } catch (error) {
+    } catch (err) {
       this.setState({ error: true });
+      Alert.alert(err.message);
     } finally {
       this.setState({ loading: false });
     }
