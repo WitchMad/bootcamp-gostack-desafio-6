@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
@@ -19,7 +19,14 @@ export const Input = styled.TextInput.attrs({
   background: #eee;
   border-radius: 4px;
   padding: 0 15px;
-  border: 1px solid #999;
+  ${props =>
+    props.error
+      ? css`
+          border: 1px solid #f34242;
+        `
+      : css`
+          border: 1px solid #999;
+        `}
 `;
 export const SubmitButton = styled(RectButton)`
   justify-content: center;
@@ -76,8 +83,23 @@ export const ProfileButton = styled(RectButton)`
   align-items: center;
   height: 36px;
 `;
-
 export const ProfileButtonText = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+`;
+export const RemoveButton = styled(RectButton)`
+  justify-content: center;
+  align-items: center;
+  background: #f34242;
+  border-radius: 4px;
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+`;
+export const RemoveButtonText = styled.Text`
   font-size: 14px;
   font-weight: bold;
   color: #fff;
